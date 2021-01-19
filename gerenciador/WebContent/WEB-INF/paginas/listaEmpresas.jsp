@@ -9,7 +9,8 @@
 <h1>Empresas Localizadas</h1>
 
 <ul>
-<c:forEach var="empresa" items="${empresas}"> 
+
+<c:forEach var="empresa" items="${empresasx}"> 
 	<li>${empresa.id} - ${empresa.nome} - ${empresa.endereco}</li>
 </c:forEach>
 
