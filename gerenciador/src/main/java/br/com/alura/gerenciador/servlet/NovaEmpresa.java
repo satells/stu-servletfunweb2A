@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,11 +28,8 @@ public class NovaEmpresa extends HttpServlet {
 
 	banco.adiciona(empresa);
 
-	PrintWriter writer = response.getWriter();
-	response.setContentType("text/html");
-	writer.print("<html><body><h1>Cadastrada Empresa</h1><br>nome: " + nome + "<br> Endereço: " + endereco + "</body></html>");
-
 	request.setAttribute("empresasx", banco.getEmpresas());
+	request.setAttribute("nomeEmpresa", nome + " - " + endereco);
 
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/listaEmpresas.jsp");
 	dispatcher.forward(request, response);
