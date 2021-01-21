@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;
+import br.com.alura.gerenciador.servlet.util.HttpServletRequestDebug;
 
 @WebServlet(urlPatterns = "/novaEmpresa")
 public class NovaEmpresa extends HttpServlet {
@@ -31,6 +32,7 @@ public class NovaEmpresa extends HttpServlet {
 	request.setAttribute("empresasx", banco.getEmpresas());
 	request.setAttribute("nomeEmpresa", nome + " - " + endereco);
 
+	HttpServletRequestDebug.debugRequest(request);
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/listaEmpresas.jsp");
 	dispatcher.forward(request, response);
 
