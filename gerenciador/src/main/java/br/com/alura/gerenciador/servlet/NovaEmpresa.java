@@ -2,7 +2,6 @@ package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;
-import br.com.alura.gerenciador.servlet.util.HttpServletRequestDebug;
 
 @WebServlet(urlPatterns = "/novaEmpresa")
 public class NovaEmpresa extends HttpServlet {
@@ -29,12 +27,16 @@ public class NovaEmpresa extends HttpServlet {
 
 	banco.adiciona(empresa);
 
-	request.setAttribute("empresasx", banco.getEmpresas());
+	request.setAttribute("empresas", banco.getEmpresas());
 	request.setAttribute("nomeEmpresa", nome + " - " + endereco);
 
-	HttpServletRequestDebug.debugRequest(request);
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/listaEmpresas.jsp");
-	dispatcher.forward(request, response);
+//	HttpServletRequestDebug.debugRequest(request);
+//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/listaEmpresas.jsp");
+
+//	RequestDispatcher dispatcher = request.getRequestDispatcher("/listaEmpresas");
+//	dispatcher.forward(request, response);
+
+	response.sendRedirect("listaEmpresas");
 
     }
 }
